@@ -54,7 +54,7 @@ const Header = () => {
             user && <>
                 <li><NavLink to="/add-item">Recommendations
                     For Me</NavLink></li>
-                <li><NavLink to="/my-cart">My Queries</NavLink></li>
+                <li><NavLink to="/my-queries">My Queries</NavLink></li>
                 <li><NavLink to="/my-recommendations">My recommendations</NavLink></li>
 
             </>

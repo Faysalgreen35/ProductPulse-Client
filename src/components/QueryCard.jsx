@@ -1,8 +1,10 @@
 import { MdRecommend } from "react-icons/md";
+import { Link } from "react-router-dom";
+// import { toast } from 'react-toastify';
 
 
 const QueryCard = ({ query }) => {
-    const { productname, productbrand, productimageurl, posted_date, querytitle, boycottingreasondetails, recommendationcount, name, image } = query;
+    const {_id, productname, productbrand, productimageurl, posted_date, querytitle, boycottingreasondetails, recommendationcount, name, image } = query;
 
     return (
         <div>
@@ -40,7 +42,11 @@ const QueryCard = ({ query }) => {
                             
                             <div>
 
+                                <Link    to={`/queries/${_id}`}>
                                 <button className="btn btn-warning"> Recommend</button>
+                                
+                                </Link>
+
                                 
                             </div>
                         </div>

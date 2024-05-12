@@ -36,43 +36,4 @@ const Home = () => {
 
 export default Home;
 
-
-
-// import { Helmet } from "react-helmet-async";
-// import Slide from "../../../components/Slide";
-// import Banner from "../../../components/Banner"; 
-// import { useLoaderData } from "react-router-dom";
-// import RecentCards from "./RecentCards";
-
  
-
-// const Home = () => {
-
-//     const queries= useLoaderData();
-
-//     console.log(queries)
-
-//     return (
-//         <div className="dark:text-white ">
-//             <Helmet>
-//                 <title>ProductPulse  | Home Page</title>
-//             </Helmet>
-//             <Banner></Banner>
-//            <Slide></Slide>
-//             <div>
-//             <h1 className="p-12 text-center text-5xl ">Recent Queries:</h1>
-//             </div>
-//            <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3">
-           
-//             {
-//                 queries.map(query => <RecentCards
-//                     key={queries._id}
-//                     query={query}
-//                     ></RecentCards>)
-//             }
-//            </div>
-//         </div>
-//     );
-// };
-
-// export default Home;

@@ -1,6 +1,7 @@
 
 
 const RecentCards = ({ query }) => {
+    
 
     const { productname, productbrand, productimageurl,posted_date, querytitle,boycottingreasondetails, name, image } = query;
 
