@@ -9,15 +9,6 @@ import { useState } from "react";
 const Queries = () => {
   // const { productname, productbrand, productimageurl,posted_date, querytitle,boycottingreasondetails, name, image } = query;
 
-  // const queries = useLoaderData();
-
-  // // Sort queries by posted_date in descending order
-  // const sortedQueries = queries.sort((a, b) => {
-  //   const dateA = new Date(a.posted_date);
-  //   const dateB = new Date(b.posted_date);
-  //   return dateB - dateA;
-  // });
-
 
 
   const queriesData = useLoaderData();
@@ -34,10 +25,6 @@ const Queries = () => {
         const dateB = new Date(b.posted_date);
         return dateB - dateA;
     });
-
-
-  
-
 
   return (
     <div>

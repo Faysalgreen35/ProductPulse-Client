@@ -3,6 +3,7 @@ import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword,
 
 import PropTypes from 'prop-types';
 import app from "../firebase/firebase.config"; 
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -53,16 +54,44 @@ const AuthProvider = ({ children }) => {
     
 
     // observer 
+    // useEffect(() => {
+    //     const unSubscribe = onAuthStateChanged(auth, currentUser => {
+    //         console.log('user in the state changed', currentUser);
+    //         setUser(currentUser);
+
+    //         setLoading(false);
+    //     })
+
+    //     return () => {
+    //         unSubscribe();
+    //     }
+    // }, [])
+
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log('user in the state changed', currentUser);
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail };
             setUser(currentUser);
-
+            console.log('current user', currentUser);
             setLoading(false);
-        })
-
+            // if user exists then issue a token
+            if (currentUser) {
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user,{withCredentials:true})
+                    .then(res => {
+                        console.log('token response', res.data);
+                    })
+            }
+            else {
+                axios.post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            }
+        });
         return () => {
-            unSubscribe();
+            return unsubscribe();
         }
     }, [])
 

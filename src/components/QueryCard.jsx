@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 const QueryCard = ({ query }) => {
-    const {_id, productname, productbrand, productimageurl, posted_date, querytitle, boycottingreasondetails, recommendationcount, name, image } = query;
+    const { _id, productname, productbrand, productimageurl, posted_date, querytitle, boycottingreasondetails, recommendationcount, name, image } = query;
 
     return (
         <div>
@@ -34,20 +34,23 @@ const QueryCard = ({ query }) => {
                         {/* Recommendation Count */}
                         <div className="flex items-center mt-2 text-5xl justify-between  ">
 
-                            <div className="avatar indicator mt-12 translate-y-8">
-                                <span className="indicator-item badge badge-secondary text-3xl p-5">{recommendationcount}</span>
+                            <div className="avatar indicator mt-12 translate-y-8 ">
+                                 <Link to={`/recommendation/${_id}`}>
+                                 <span className="indicator-item badge badge-secondary text-3xl p-5">{recommendationcount}</span>
                                 <div className="w-20 h-40 rounded-lg text-6xl">
-                                <MdRecommend />    </div>
+                                    <MdRecommend />    </div>
+                                </Link>
+                              
                             </div>
-                            
+
                             <div>
 
-                                <Link    to={`/queries/${_id}`}>
-                                <button className="btn btn-warning"> Recommend</button>
-                                
+                                <Link to={`/queries/${_id}`}>
+                                    <button className="btn btn-warning"> Recommend</button>
+
                                 </Link>
 
-                                
+
                             </div>
                         </div>
                         {/* Recommend Button */}

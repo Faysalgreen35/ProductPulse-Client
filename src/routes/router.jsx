@@ -14,6 +14,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import MyRecommendations from "../pages/Home/MyRecommendations/MyRecommendations";
 import RecommendationsForMe from "../pages/Home/RecommendationsForMe/RecommendationsForMe";
 import UpdatedQuery from "../pages/Home/UpdatedQuery/UpdatedQuery";
+import AllRecommendation from "../components/AllRecommendation";
 
 
 
@@ -71,6 +72,12 @@ const router = createBrowserRouter([
                 element: <PrivateRoutes><QueryDetails /></PrivateRoutes>,
                 loader: ({ params }) =>
                   fetch(`${import.meta.env.VITE_API_URL}/query/${params.id}`),
+              },
+            {
+                path: '/recommendation/:id',
+                element: <AllRecommendation></AllRecommendation>,
+                loader: ({ params }) =>
+                  fetch(`${import.meta.env.VITE_API_URL}/recommendation/${params.id}`),
               },
 
 

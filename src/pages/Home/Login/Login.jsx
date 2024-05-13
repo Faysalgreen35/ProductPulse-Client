@@ -10,6 +10,7 @@ import { FcGoogle } from "react-icons/fc";
 // import { FaGithub } from "react-icons/fa6";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import axios from "axios";
 
 
 const Login = () => {
@@ -53,6 +54,15 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 console.log(result.user);
+                const user = {email};
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user,{withCredentials:true})
+                .then(res => {
+                    console.log(res.data)
+                    if(res.data.succcess){
+                navigate(location?.state ? location?.state : '/');
+    
+                    }
+                })
                 toast.success("Logged in successfully!");
                 navigate(location?.state ? location.state : '/');
             })
@@ -61,6 +71,32 @@ const Login = () => {
                 toast.error("Failed to login. Please try again.");
             });
     };
+
+    // const  handleLogin = (event) =>{
+    //     event.preventDefault(); 
+    //     const email = event.target.email.value;
+    //     const password = event.target.password.value;
+    //     // console.log(name, email, password);
+
+    //     signIn(email, password)
+    //     .then(result =>{
+    //         const loggedInUser = result.user;
+    //         console.log(loggedInUser);
+    //         const user = {email};
+    //         // navigate(location?.state ? location?.state : '/');
+    //         //get access token
+    //         axios.post('https://car-genius-server-omega.vercel.app/jwt', user,{withCredentials:true})
+    //         .then(res => {
+    //             console.log(res.data)
+    //             if(res.data.succcess){
+    //         navigate(location?.state ? location?.state : '/');
+
+    //             }
+    //         })
+
+    //     })
+    //     .catch(error =>console.error(error));
+    // }
 
     return (
         <div className="">
