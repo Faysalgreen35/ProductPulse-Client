@@ -26,7 +26,7 @@ const Home = () => {
                 <h1 className="p-12 text-center text-5xl">Recent Queries:</h1>
             </div>
             <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3">
-                {sortedQueries.map(query => (
+                {sortedQueries.slice(0, 6).map(query => (
                     <RecentCards key={query._id} query={query} />
                 ))}
             </div>

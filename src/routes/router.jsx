@@ -11,6 +11,9 @@ import QueryDetails from "../components/QueryDetails";
 import MyQueries from "../pages/Home/MyQueries/MyQueries";
 import AddQueries from "../pages/Home/MyQueries/AddQueries";
 import PrivateRoutes from "./PrivateRoutes";
+import MyRecommendations from "../pages/Home/MyRecommendations/MyRecommendations";
+import RecommendationsForMe from "../pages/Home/RecommendationsForMe/RecommendationsForMe";
+import UpdatedQuery from "../pages/Home/UpdatedQuery/UpdatedQuery";
 
 
 
@@ -34,11 +37,22 @@ const router = createBrowserRouter([
                 element:<Register></Register>
             },
             {
-                path:'/my-recommendations'
+                path:'/my-recommendations',
+                element:<PrivateRoutes><MyRecommendations></MyRecommendations></PrivateRoutes>
+            },
+            {
+                path:'/recommendations-forme',
+                element:<PrivateRoutes><RecommendationsForMe></RecommendationsForMe></PrivateRoutes>
             },
             {
                 path:'/my-queries',
                 element:<PrivateRoutes><MyQueries></MyQueries></PrivateRoutes>
+            },
+            {
+                path:'/my-queries/updateQueries/:id',
+                element:<PrivateRoutes><UpdatedQuery></UpdatedQuery></PrivateRoutes>,
+                loader: ({ params }) =>
+                    fetch(`${import.meta.env.VITE_API_URL}/query/${params.id}`)
             },
             {
                 path:'/add-queries',
@@ -58,6 +72,7 @@ const router = createBrowserRouter([
                 loader: ({ params }) =>
                   fetch(`${import.meta.env.VITE_API_URL}/query/${params.id}`),
               },
+
 
 
         ]

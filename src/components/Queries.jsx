@@ -73,7 +73,7 @@ const Queries = () => {
           </div>
           <TabPanel>
             <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'>
-              {sortedQueries.slice(0, 6).map(query => (
+              {sortedQueries.map(query => (
                 <QueryCard key={query._id} query={query} />
               ))}
             </div>
@@ -81,7 +81,7 @@ const Queries = () => {
 
           <TabPanel>
             <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2'>
-              {sortedQueries.slice(0, 6).map(query => (
+              {sortedQueries.map(query => (
                 <QueryCard key={query._id} query={query} />
               ))}
             </div>
@@ -89,7 +89,7 @@ const Queries = () => {
 
           <TabPanel>
             <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'>
-              {sortedQueries.slice(0, 6).map(query => (
+              {sortedQueries.map(query => (
                 <QueryCard key={query._id} query={query} />
               ))}
             </div>
