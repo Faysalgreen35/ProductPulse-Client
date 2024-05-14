@@ -1,6 +1,4 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { useContext } from "react";
-// import { AuthContext } from "../../providers/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
@@ -18,17 +16,19 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const handleGoogleSignIn = () => {
-        signInwithGoogle()
-            .then(result => {
-                console.log(result.user);
-                toast.success("Logged in successfully!");
-            })
-            .catch(error => {
-                console.error(error);
-                toast.error("Failed to login. Please try again.");
-            });
-    }
+    // const handleGoogleSignIn = () => {
+    //     signInwithGoogle()
+    //         .then(result => {
+    //             console.log(result.user);
+                
+
+    //             toast.success("Logged in successfully!");
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //             toast.error("Failed to login. Please try again.");
+    //         });
+    // }
 
     // const handleGithubSignIn = () => {
     //     signInwithGithub()
@@ -42,6 +42,30 @@ const Login = () => {
     //         });
     // }
 
+    const handleGoogleSignIn = () => {
+        signInwithGoogle()
+            .then(result => {
+                console.log(result.user);
+                const user = { email: result.user.email }; // Extract user email from result
+                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.success) {
+                            toast.success("Logged in successfully!");
+                            navigate(location?.state ? location.state : '/');
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        toast.error("Failed to login. Please try again.");
+                    });
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error("Failed to login. Please try again.");
+            });
+    };
+    
 
     const {
         register,

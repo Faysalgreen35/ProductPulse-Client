@@ -2,14 +2,24 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/bundle';
 import { FreeMode, Navigation, Autoplay, Pagination } from 'swiper/modules';
+import { useEffect } from 'react';
 // import { useEffect } from 'react';
 
-// import AOS from 'aos';
-// import 'aos/dist/aos.css';  
+import AOS from 'aos';
+import 'aos/dist/aos.css';  
 
 const Banner = () => {
+
+      
+    //aos use
+    useEffect(() => {
+        AOS.init({
+            duration: 1000, // Set the duration for the animation
+            once: true, // Set to true if you want the animation to occur only once
+        });
+    }, []);
     return (
-        <div className='lg:max-w-7xl mx-auto dark:bg-black '>
+        <div data-aos="zoom-out" className='lg:max-w-7xl mx-auto dark:bg-black '>
 
             <div   className='md:max-w-7xl    '>
                 <Swiper

@@ -1,9 +1,21 @@
 import { Link } from "react-router-dom";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';  
+import { useEffect } from "react";
 
 const Slide = () => {
+
+    
+    //aos use
+    useEffect(() => {
+      AOS.init({
+          duration: 1000, // Set the duration for the animation
+          once: true, // Set to true if you want the animation to occur only once
+      });
+  }, []);
   return (
-    <div className="dark:text-white">
+    <div data-aos="zoom-in" className="dark:text-white">
       <div
         className='w-full bg-center bg-cover h-[18rem]'
         style={{

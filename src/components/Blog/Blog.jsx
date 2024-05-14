@@ -1,13 +1,24 @@
  
+import AOS from 'aos';
+import 'aos/dist/aos.css';  
+import { useEffect } from 'react';
 
 const Blog = () => {
+
+     //aos use
+     useEffect(() => {
+        AOS.init({
+            duration: 1000, // Set the duration for the animation
+            once: true, // Set to true if you want the animation to occur only once
+        });
+    }, []);
     return (
-        <section className="bg-white dark:bg-gray-900">
+        <section data-aos="fade" className="bg-white dark:bg-gray-900">
             <div className="container px-6 py-10 mx-auto">
                 <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">ProductPulse Blog</h1>
 
                 <div className="mt-8 lg:-mx-6 lg:flex lg:items-center">
-                    <img className="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="https://www.plytix.com/hubfs/pim-2.jpg" alt="Product Pulse Blog" />
+                    <img data-aos="zoom-out" className="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="https://www.plytix.com/hubfs/pim-2.jpg" alt="Product Pulse Blog" />
 
                     <div className="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
                         <p className="text-sm text-blue-500 uppercase">Alternative Product Information Management</p>

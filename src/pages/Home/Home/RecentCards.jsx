@@ -1,14 +1,24 @@
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';  
+import { useEffect } from 'react';
 
 const RecentCards = ({ query }) => {
     
-
+  
+    //aos use
+    useEffect(() => {
+        AOS.init({
+            duration: 1000, // Set the duration for the animation
+            once: true, // Set to true if you want the animation to occur only once
+        });
+    }, []);
     const { productname, productbrand, productimageurl,posted_date, querytitle,boycottingreasondetails, name, image } = query;
 
     return (
         <div>
              <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-                <img className="object-cover w-full h-64" src={productimageurl} alt="Article" />
+                <img data-aos="zoom-out" className="object-cover w-full h-64" src={productimageurl} alt="Article" />
 
                 <div className="p-6">
                     <div>

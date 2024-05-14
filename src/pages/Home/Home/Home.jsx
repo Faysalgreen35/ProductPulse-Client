@@ -7,6 +7,8 @@ import RecentCards from "./RecentCards";
 import TrendRadar from "../../../components/TrendRadar/TrendRadar";
 import Blog from "../../../components/Blog/Blog";
 
+// import { useEffect } from "react";
+
 const Home = () => {
     const queries = useLoaderData();
 
@@ -16,6 +18,9 @@ const Home = () => {
         const dateB = new Date(b.posted_date);
         return dateB - dateA;
     });
+
+  
+
 
     return (
         <div className="dark:text-white">
@@ -33,7 +38,7 @@ const Home = () => {
                 ))}
             </div>
 
-            <section className="m-12 lg:max-w-7xl">
+            <section  className="m-12 lg:max-w-7xl">
                 <TrendRadar></TrendRadar>
             </section>
 
