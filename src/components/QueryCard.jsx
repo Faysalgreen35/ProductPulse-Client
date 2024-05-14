@@ -1,11 +1,11 @@
-import { MdRecommend } from "react-icons/md";
+import { MdComment } from "react-icons/md";
 import { Link } from "react-router-dom";
 // import { toast } from 'react-toastify';
 
 
 const QueryCard = ({ query }) => {
     const { _id, productname, productbrand, productimageurl, posted_date, querytitle, boycottingreasondetails, recommendationcount, name, image } = query;
-
+    const hasRecommendationData = recommendationcount > 0;
     return (
         <div>
             <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -32,16 +32,44 @@ const QueryCard = ({ query }) => {
                         </div>
 
                         {/* Recommendation Count */}
-                        <div className="flex items-center mt-2 text-5xl justify-between  ">
+                        <div className="flex  mt-2 text-5xl justify-between   items-center">
 
-                            <div className="avatar indicator mt-12 translate-y-8 ">
+                            {/* <div className="avatar indicator mt-12 translate-y-8 ">
                                  <Link to={`/recommendation/${_id}`}>
                                  <span className="indicator-item badge badge-secondary text-3xl p-5">{recommendationcount}</span>
                                 <div className="w-20 h-40 rounded-lg text-6xl">
                                     <MdRecommend />    </div>
                                 </Link>
                               
+                            </div> */}
+
+
+                            <div className="avatar indicator mt-12 translate-y-8 ">
+                                {hasRecommendationData ? (
+                                    <Link to={`/recommendation/${_id}`}>
+                                        <span className="indicator-item badge badge-secondary text-3xl p-5">
+                                            {recommendationcount}
+                                        </span>
+                                        <div className="w-20 h-40 rounded-lg text-6xl">
+                                            <MdComment />
+                                        </div>
+                                    </Link>
+                                ) : (
+
+                                    <div className="-translate-y-10 -translate-x-10   m-12 w-[50%]  h-36 ">
+
+                                        <span className="indicator-item badge badge-secondary translate-y-3 text-3xl p-5 -translate-x-7">
+                                            {recommendationcount}
+                                        </span>
+                                        <div className="w-20 h-40 rounded-lg  translate-y-10 text-6xl">
+                                            <MdComment />
+                                        </div>
+
+                                    </div>
+
+                                )}
                             </div>
+
 
                             <div>
 

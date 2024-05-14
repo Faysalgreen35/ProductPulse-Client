@@ -73,6 +73,9 @@ const Register = () => {
 
     return (
         <div>
+             <Helmet>
+                <title>ProductPulse | Register Page</title>
+            </Helmet>
               <ToastContainer />
             <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
                 <Helmet>

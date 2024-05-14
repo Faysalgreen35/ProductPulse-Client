@@ -1,24 +1,31 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
-import Swal from "sweetalert2";
+import Swal from "sweetalert2"; 
+import { Helmet } from "react-helmet-async";
+import axios from "axios"; 
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 
 const MyRecommendations = () => {
     const { user } = useContext(AuthContext);
+    const useaxiosSecure = useAxiosSecure()
 
     const [recommendation, setRecommendation] = useState([]);
+
+
     // const [query, setQuery] = useState([]);
 
     useEffect(() => {
         const fetchQueries = async () => {
             try {
                 if (user) {
-                    const response = await axios.get(`${import.meta.env.VITE_API_URL}/recommendation/email/${user?.email}`);
-                    setRecommendation(response.data);
+                    const response = await axios.get(`${import.meta.env.VITE_API_URL}/recommendation/email/${user?.email}`, {withCredentials:true});
+                    setRecommendation(response.data); 
+
                 }
             } catch (error) {
                 console.error('Error fetching queries:', error);
@@ -29,26 +36,31 @@ const MyRecommendations = () => {
     }, [user]);
 
     console.log(recommendation)
+    console.log(user.email)
 
-
-    // const handleDeleteRecommendation = async recommendationId => {
+ 
+    // useEffect(() => {
+    //     getData()
+    //   }, [user])
+    
+     
+    // const getData = async () => {
     //     try {
-    //         await axios.delete(
-    //             `${import.meta.env.VITE_API_URL}/recommendation/${recommendationId}`
-    //         );
-
-    //         // Update recommendation count locally if the request is successful
-    //         setQuery({
-    //             ...query,
-    //             recommendationcount: query.recommendationcount - 1
-    //         });
-
-    //         console.log('Recommendation deleted successfully');
-    //     } catch (err) {
-    //         console.log(err);
-    //         console.log('Error deleting recommendation:', err.message);
+    //       const response = await axiosSecure(`/recommendation/email/${user?.email}`);
+    //       if (response && response.data) {
+    //         setRecommendation(response.data);
+    //       } else {
+    //         console.error('Error retrieving data:', response);
+    //         // Handle the error appropriately, e.g., show an error message to the user
+    //       }
+    //     } catch (error) {
+    //       console.error('Error retrieving data:', error);
+    //       // Handle the error appropriately, e.g., show an error message to the user
     //     }
-    // };
+    //   };
+      
+
+
 
     const handleDelete = async (recommendationId) => {
         // Show confirmation dialog
@@ -64,7 +76,7 @@ const MyRecommendations = () => {
     
         if (confirmation.isConfirmed) {
             try {
-                const response = await axios.delete(`${import.meta.env.VITE_API_URL}/recommendation/${recommendationId}`);
+                const response = await useaxiosSecure.delete(`/recommendation/${recommendationId}`);
                 if (response.data.success) {
                     setRecommendation(recommendation.filter((quer) => quer._id !== recommendationId)); // Update state here
                     Swal.fire({
@@ -75,10 +87,7 @@ const MyRecommendations = () => {
                         // Reload the page after successful deletion
                         window.location.reload();
                     });
-                }
-                
-                
-                else {
+                } else {
                     Swal.fire({
                         title: "Failed to delete!",
                         text: "Failed to delete the query.",
@@ -95,9 +104,13 @@ const MyRecommendations = () => {
             }
         }
     };
+    
 
     return (
         <div>
+             <Helmet>
+                <title>ProductPulse |MyRecommendations</title>
+            </Helmet>
             <section className="container px-4 mx-auto">
                 <div className="flex items-center gap-x-3">
                     <h2 className="text-lg font-medium text-gray-800 dark:text-white">Recommendation count </h2>
@@ -190,3 +203,14 @@ const MyRecommendations = () => {
 };
 
 export default MyRecommendations; 
+
+
+
+
+
+
+
+
+
+
+

@@ -101,7 +101,7 @@ const Login = () => {
     return (
         <div className="">
             <Helmet>
-                <title>Craftify Creations| Login Page</title>
+                <title>ProductPulse | Login Page</title>
             </Helmet>
             <ToastContainer />
             <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: 'url(https://shorturl.at/bdBLW)' }}>

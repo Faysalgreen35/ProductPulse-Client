@@ -77,6 +77,11 @@ const Footer = () => {
                 </a>
             </div>
         </div>
+
+        <div >
+            <hr />
+        <p className="text-sm text-gray-500 dark:text-gray-300 text-center m-3">© Copyright 2021. All Rights Reserved.</p>
+        </div>
     </div>
 </footer>
          

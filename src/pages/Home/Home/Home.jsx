@@ -4,6 +4,8 @@ import Slide from "../../../components/Slide";
 import Banner from "../../../components/Banner"; 
 import { useLoaderData } from "react-router-dom";
 import RecentCards from "./RecentCards";
+import TrendRadar from "../../../components/TrendRadar/TrendRadar";
+import Blog from "../../../components/Blog/Blog";
 
 const Home = () => {
     const queries = useLoaderData();
@@ -30,6 +32,12 @@ const Home = () => {
                     <RecentCards key={query._id} query={query} />
                 ))}
             </div>
+
+            <section className="m-12 lg:max-w-7xl">
+                <TrendRadar></TrendRadar>
+            </section>
+
+            <Blog></Blog>
         </div>
     );
 };

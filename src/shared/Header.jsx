@@ -7,7 +7,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { useContext, useEffect, useState } from "react";
 
 const Header = () => {
-    const { user, logout } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     console.log('wait for usersss',)
 
     const [darkMode, setDarkMode] = useState(false);
@@ -38,7 +38,7 @@ const Header = () => {
 
 
     const handleSigOut = () => {
-        logout()
+        logOut()
             .then()
             .catch()
     }
@@ -63,7 +63,7 @@ const Header = () => {
 
     return (
 
-        <div className={`navbar text-yellow-700 text-neon-lime dark:bg-gray-800 dark:text-white bg-[#6da069] py-1 font-bold font-playfair p-1 ${isScrolled ? 'fixed top-0 left-0 right-0 z-50 max-w-7xl mx-auto ' : ''}`}>
+        <div className={`navbar text-white   text-neon-lime dark:bg-gray-800 dark:text-white  bg-gradient-to-r from-violet-500 to-fuchsia-500 py-1 font-bold font-playfair p-1 ${isScrolled ? 'fixed top-0 left-0 right-0 z-50 max-w-7xl mx-auto ' : ''}`}>
 
             <div className="navbar-start">
                 <div className="  dropdown dark:text-white dark:bg-gray-600 ">
