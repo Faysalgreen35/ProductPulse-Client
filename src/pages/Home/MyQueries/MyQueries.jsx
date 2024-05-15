@@ -5,6 +5,7 @@ import MyqueryCard from "./MyqueryCard";
 // import axios from "axios";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -63,6 +64,9 @@ const MyQueries = () => {
   return (
 
     <div>
+       <Helmet>
+                <title>ProductPulse | MyQueries </title>
+            </Helmet>
       <div className="dark:text-white">
         <div
           className='w-full bg-center bg-cover h-[38rem]'
@@ -107,11 +111,6 @@ const MyQueries = () => {
                   </div>
                 </div>
               </div>
-
-
-
-
-
 
             </div>
           ) : (

@@ -1,12 +1,12 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import {  useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { FaEye } from "react-icons/fa6";
 // import { IoIosEyeOff } from "react-icons/io";
 // import { AuthContext } from '../../providers/AuthProvider';
 import { useForm } from 'react-hook-form';
-import { Helmet } from 'react-helmet-async'; 
+import { Helmet } from 'react-helmet-async';
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; 
+import "react-toastify/dist/ReactToastify.css";
 import { IoIosEyeOff } from 'react-icons/io';
 import { AuthContext } from '../../../providers/AuthProvider';
 
@@ -52,10 +52,10 @@ const Register = () => {
                 .then(result => {
                     console.log(result.user);
                     console.log(name);
-                    
+
                     toast.success("User registered in successfully!");
                     navigate(location?.state ? location.state : '/register');
-                    setSuccsess('User registered successfully!');  
+                    setSuccsess('User registered successfully!');
 
                 })
                 .catch(error => {
@@ -73,41 +73,41 @@ const Register = () => {
 
     return (
         <div>
-             <Helmet>
+            <Helmet>
                 <title>ProductPulse | Register Page</title>
             </Helmet>
-              <ToastContainer />
-            <div className="hero min-h-screen bg-base-200" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
-                <Helmet>
-                    <title>ProductPulse   | Register Page</title>
-                </Helmet>
-                
-                <div className="hero-content flex-col hero-overlay lg:flex-row-reverse bg-opacity-60 ">
-                    <div>
-                        <h1 className="text-5xl font-bold text-white lg:px-6 font-inter   ">Register now!</h1>
+            <ToastContainer />
+            <div className="hero min-h-screen bg-base-200" >
+
+                <div className="hero-content grid grid-cols-1 lg:grid-cols-2 flex-col hero-overlay lg:flex-row bg-opacity-60 ">
+                    <div className='w-full h-full flex justify-center flex-col items-center m-2 rounded-sm' style={{ backgroundImage: 'url(https://t4.ftcdn.net/jpg/01/19/11/55/360_F_119115529_mEnw3lGpLdlDkfLgRcVSbFRuVl6sMDty.jpg)' }}>
+
+
+                        <h1 className="text-3xl font-bold text-white lg:px-4 font-inter text-center m-12  ">Welcome to ProductPulse!</h1>
+                        <h1 className="text-5xl font-bold text-white lg:px-6 font-inter  ">Register now!</h1>
                     </div>
 
-                    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                    <div className="card shrink-0 w-full   shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input type="text" placeholder="Name" name="name" className="input input-bordered" {...register("name", { required: true })}/>
+                                <input type="text" placeholder="Name" name="name" className="input input-bordered" {...register("name", { required: true })} />
                                 {errors.name && <span className='text-red-500'>This field is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="Email" name="email" className="input input-bordered" {...register("email", { required: true })}/>
+                                <input type="email" placeholder="Email" name="email" className="input input-bordered" {...register("email", { required: true })} />
                                 {errors.email && <span className='text-red-500'>This field is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Photo Url</span>
                                 </label>
-                                <input type="text" placeholder="Photo Url" name="photo" className="input input-bordered" {...register("photo", { required: true })}/>
+                                <input type="text" placeholder="Photo Url" name="photo" className="input input-bordered" {...register("photo", { required: true })} />
                                 {errors.photo && <span className='text-red-500'>This field is required</span>}
                             </div>
                             <div>
@@ -116,7 +116,7 @@ const Register = () => {
                                 </label>
                             </div>
                             <div className="flex w-full">
-                                <input type={showPassword ? "text" : "password"} placeholder="Password" name="password" className="input input-bordered md:px-16" {...register("password", { required: true })}/>
+                                <input type={showPassword ? "text" : "password"} placeholder="Password" name="password" className="input input-bordered lg:py-5 lg:px-1 w-full" {...register("password", { required: true })} />
                                 <span className="text-2xl text-black dark:text-black mt-4 -translate-x-7 " onClick={() => setShowPassword(!showPassword)}> {!showPassword ? <FaEye /> : <IoIosEyeOff />}</span>
                             </div>
                             {succsess && <p className="ml-12 text-center text-success mt-4 mb-3">{succsess}</p>}
@@ -126,10 +126,14 @@ const Register = () => {
                                 <button className="btn btn-primary">Register</button>
                             </div>
                         </form>
-                        <p className="p-4 text-center text-black">Already have account? <Link className="text-blue-500" to='/login'>Login</Link></p>
+                        <p className="p-4 text-center text-black">Already have account? <Link className="text-blue-500 text-3xl" to='/login'>Login</Link></p>
                     </div>
                 </div>
+
+
             </div>
+
+           
         </div>
     );
 };

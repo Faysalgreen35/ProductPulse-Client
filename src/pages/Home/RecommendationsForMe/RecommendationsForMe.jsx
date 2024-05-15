@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 // import axios from "axios";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 // import { MdDelete } from "react-icons/md";
 
  
@@ -33,6 +34,9 @@ const RecommendationsForMe = () => {
 
     return (
         <div>
+             <Helmet>
+                <title>ProductPulse |RecommendationsForMe</title>
+            </Helmet>
         <section className="container px-4 mx-auto">
             <div className="flex items-center gap-x-3">
                 <h2 className="text-lg font-medium text-gray-800 dark:text-white">Recommendation count </h2>
