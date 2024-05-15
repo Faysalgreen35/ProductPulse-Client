@@ -12,10 +12,13 @@ const PrivateRoutes = ({children}) => {
     console.log(location)
 
     if(loading){
-        return  <div className="w-full text-center "><span className="loading loading-bars loading-xs"></span>
-        <span className="loading loading-bars loading-sm"></span>
-        <span className="loading loading-bars loading-md"></span>
-        <span className="loading loading-bars loading-lg"></span></div>
+        return  <div className="w-full text-center flex justify-center items-center p-12">
+        <span className="loading loading-ring loading-xs"></span>
+<span className="loading loading-ring loading-sm"></span>
+<span className="loading loading-ring loading-md"></span>
+<span className="loading loading-ring loading-lg"></span>
+        
+        </div>
        
     }
 
