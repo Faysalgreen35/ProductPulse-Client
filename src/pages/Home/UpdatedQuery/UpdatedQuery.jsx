@@ -59,7 +59,7 @@ const UpdatedQuery = () => {
         <div>
             <div className="bg-[#F4F3F0] p-20  text-pruple-500   dark:bg-gray-800 dark:text-white    ">
                 <Helmet>
-                    <title>Craftify Creations || Updated Query Page</title>
+                    <title>ProductPulse || Updated Query Page</title>
                 </Helmet>
                 <h1 className="lg:text-4xl font-extrabold text-center mb-10 ">Updated Query</h1>
 
