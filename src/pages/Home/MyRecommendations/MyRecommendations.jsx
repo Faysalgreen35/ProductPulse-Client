@@ -17,24 +17,6 @@ const MyRecommendations = () => {
     const [recommendation, setRecommendation] = useState([]);
     const axiosSecure= useAxiosSecure();
 
-     
-
-    // useEffect(() => {
-    //     const fetchQueries = async () => {
-    //         try {
-    //             if (user) {
-    //                 const response = await axios.get(`${import.meta.env.VITE_API_URL}/recommendation/email/${user?.email}`, { withCredentials: true });
-    //                 setRecommendation(response.data);
-
-    //             }
-    //         } catch (error) {
-    //             console.error('Error fetching queries:', error);
-    //         }
-    //     };
-
-    //     fetchQueries();
-    // }, [user]);
-
 
     useEffect(() => {
         const fetchRecommendations = async () => {
