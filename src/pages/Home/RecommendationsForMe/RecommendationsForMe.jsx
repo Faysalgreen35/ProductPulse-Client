@@ -60,10 +60,9 @@ const RecommendationsForMe = () => {
 
 
 
-                                        <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Recommendation Reason</th>
+                                        <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400 hidden sm:table-cell">Recommendation Reason</th>
 
-                                        <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Status</th>
-
+                                    
                                         {/* <th scope="col" className="relative py-3.5 px-4">
                                             <span className="sr-only">Edit</span>
                                         </th> */}
@@ -93,12 +92,8 @@ const RecommendationsForMe = () => {
                                                 </div>
                                             </td>
 
-                                            <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{recomend.recommendationReason}</td>
-                                            <td className="px-4 py-4 text-sm whitespace-nowrap">
-                                                <div className="flex items-center gap-x-2">
-                                                    
-                                                </div>
-                                            </td>
+                                            <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap hidden sm:table-cell">{recomend.recommendationReason}</td>
+                                            
                                             
                                         </tr>)
                                     }

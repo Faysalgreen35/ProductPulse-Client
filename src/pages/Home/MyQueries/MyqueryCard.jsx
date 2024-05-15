@@ -89,12 +89,12 @@ const MyqueryCard = ({ query }) => {
                         </div>
                         <div className="flex justify-between mt-12">
                             <Link to={`/queries/${_id}`}>
-                                <button className="bg-blue-500 text-white px-4 py-4 text-xl rounded hover:bg-blue-600">View Details</button>
+                                <button className="bg-blue-500 text-white px-1 lg:px-4 py-4 lg:py-4 text-xl rounded hover:bg-blue-600">View Details</button>
                             </Link>
                             <Link to={`updateQueries/${_id}`}>
-                                <button className="bg-green-500 text-white px-4 py-4 text-4xl rounded hover:bg-blue-600"><CiEdit /></button>
+                                <button className="bg-green-500 text-white px-1 lg:px-4 py-4 text-4xl rounded hover:bg-blue-600"><CiEdit /></button>
                             </Link>
-                            <button onClick={() => handleDelete(_id)} className="bg-red-500 text-white px-4 py-4 text-4xl rounded hover:bg-green-600"><MdDelete /></button>
+                            <button onClick={() => handleDelete(_id)} className="bg-red-500 text-white px-1 lg:px-4 py-1 lg:py-4 text-4xl rounded hover:bg-green-600"><MdDelete /></button>
                         </div>
                     </div>
                 </div>

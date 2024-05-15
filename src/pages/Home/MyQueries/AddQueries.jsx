@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 
@@ -48,6 +49,18 @@ const AddQueries = () => {
                 recommendationData
             )
             console.log(data)
+
+             // Show SweetAlert success message
+        Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'Your queries  has been added successfully.',
+            showConfirmButton: false,
+            timer: 2000 // Hide after 2 seconds
+        });
+        
+        // Optional: Reset the form after submission
+        form.reset();
         } catch (err) {
             console.log(err)
             console.log('Hi, i am error', err.message)

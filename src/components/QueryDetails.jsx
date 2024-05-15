@@ -4,6 +4,7 @@ import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { useContext, useState } from "react";
+import Swal from "sweetalert2";
 // import { MdRecommend } from "react-icons/md";
 // import { toast } from "react-toastify";
 
@@ -60,6 +61,18 @@ const QueryDetails = () => {
         }));
 
         console.log(data);
+        
+             // Show SweetAlert success message
+             Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: 'Your recommendation has been submitted successfully.',
+              showConfirmButton: false,
+              timer: 2000 // Hide after 2 seconds
+          });
+          
+          // Optional: Reset the form after submission
+          form.reset();
     } catch (err) {
         console.log('Error adding recommendation:', err);
     }

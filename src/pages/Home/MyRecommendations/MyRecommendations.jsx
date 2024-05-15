@@ -3,9 +3,9 @@ import { AuthContext } from "../../../providers/AuthProvider";
 // import axios from "axios";
 import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
-import Swal from "sweetalert2"; 
+import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
-import axios from "axios"; 
+import axios from "axios";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
@@ -23,8 +23,8 @@ const MyRecommendations = () => {
         const fetchQueries = async () => {
             try {
                 if (user) {
-                    const response = await axios.get(`${import.meta.env.VITE_API_URL}/recommendation/email/${user?.email}`, {withCredentials:true});
-                    setRecommendation(response.data); 
+                    const response = await axios.get(`${import.meta.env.VITE_API_URL}/recommendation/email/${user?.email}`, { withCredentials: true });
+                    setRecommendation(response.data);
 
                 }
             } catch (error) {
@@ -38,12 +38,12 @@ const MyRecommendations = () => {
     console.log(recommendation)
     console.log(user.email)
 
- 
+
     // useEffect(() => {
     //     getData()
     //   }, [user])
-    
-     
+
+
     // const getData = async () => {
     //     try {
     //       const response = await axiosSecure(`/recommendation/email/${user?.email}`);
@@ -58,7 +58,7 @@ const MyRecommendations = () => {
     //       // Handle the error appropriately, e.g., show an error message to the user
     //     }
     //   };
-      
+
 
 
 
@@ -73,7 +73,7 @@ const MyRecommendations = () => {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         });
-    
+
         if (confirmation.isConfirmed) {
             try {
                 const response = await useaxiosSecure.delete(`/recommendation/${recommendationId}`);
@@ -104,11 +104,11 @@ const MyRecommendations = () => {
             }
         }
     };
-    
+
 
     return (
         <div>
-             <Helmet>
+            <Helmet>
                 <title>ProductPulse |MyRecommendations</title>
             </Helmet>
             <section className="container px-4 mx-auto">
@@ -123,17 +123,17 @@ const MyRecommendations = () => {
                         <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                             <div className="overflow-hidden border border-gray-200 dark:border-gray-700 md:rounded-lg">
                                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                                    <thead className="bg-gray-50 dark:bg-gray-800">
+                                    <thead className="bg-gray-50  dark:bg-gray-800">
                                         <tr>
-                                            <th scope="col" className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            <th scope="col" className="py-3.5 px-4 text-sm  font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                                 <div className="flex items-center gap-x-3">
                                                     <input type="checkbox" className="text-blue-500 border-gray-300 rounded dark:bg-gray-900 dark:ring-offset-gray-900 dark:border-gray-700" />
-                                                    <span>Name</span>
+                                                    <span>Name&Email</span>
                                                 </div>
                                             </th>
 
-                                            <th scope="col" className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                                <button className="flex items-center gap-x-2">
+                                            <th scope="col" className="   px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400 hidden sm:table-cell">
+                                                <button className="flex items-center gap-x-2   ">
                                                     <span>Product Name</span>
 
 
@@ -142,7 +142,7 @@ const MyRecommendations = () => {
 
 
 
-                                            <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Recommendation Reason</th>
+                                            <th scope="col" className="  px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400 hidden sm:table-cell">Recommendation Reason</th>
 
                                             <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">Status</th>
 
@@ -167,7 +167,7 @@ const MyRecommendations = () => {
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                                <td className="px-12 py-4 text-sm font-medium text-gray-700 whitespace-nowrap hidden sm:table-cell">
                                                     <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 dark:bg-gray-800">
                                                         <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
 
@@ -175,7 +175,7 @@ const MyRecommendations = () => {
                                                     </div>
                                                 </td>
 
-                                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">{recomend.recommendationReason}</td>
+                                                <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap hidden sm:table-cell">{recomend.recommendationReason}</td>
                                                 <td className="px-4 py-4 text-sm whitespace-nowrap">
                                                     <div className="flex items-center gap-x-2">
                                                         <Link>
@@ -185,7 +185,7 @@ const MyRecommendations = () => {
                                                         </Link>
                                                     </div>
                                                 </td>
-                                                
+
                                             </tr>)
                                         }
 
@@ -202,7 +202,7 @@ const MyRecommendations = () => {
     );
 };
 
-export default MyRecommendations; 
+export default MyRecommendations;
 
 
 

@@ -29,8 +29,8 @@ const Slide = () => {
             </h1>
             <br />
             <Link to='/queries'>
-            <button className="btn btn-outline btn-success text-red-400"> Visit  Queries </button>
-            
+            {/* <button className="btn btn-outline btn-success text-red-400"> Visit  Queries </button> */}
+            <button className="btn font-bold items-center justify-center  bg-gradient-to-r from-sky-200 to-blue-500 border-none  text-white p-12 mb-5 rounded-full">Visit  Queries</button>
             </Link>
           </div>
         </div>
