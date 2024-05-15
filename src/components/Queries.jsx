@@ -88,22 +88,25 @@ const Queries = () => {
         <input
           type="text"
           placeholder="Searchs by product name..."
-          className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+          className="px-4 py-5 border border-gray-300 w-full ml-12 lg:ml-0  lg:w-[40%]  focus:outline-none focus:border-blue-500 rounded-full"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
-        <button
+        {/* <button
           className="px-4 py-2 ml-2 bg-blue-500 text-white rounded-md focus:outline-none hover:bg-blue-600"
           onClick={handleSearch}
         >
           Search
-        </button>
+        </button> */}
+         <button type="button"   onClick={handleSearch} className="relative -translate-x-[120px] lg:-translate-x-[150px] px-8 py-4 ml-4  bg-gradient-to-r text-gray-900 font-bold  from-sky-200 to-blue-500 overflow-hidden    dark:bg-gray-800 dark:text-gray-50 lg:w-[10%] lg:h-[30%] rounded-full">Search
+                <span className="absolute top-0 right-0 px-5 py-1 text-xs tracking-wider text-center uppercase whitespace-no-wrap origin-bottom-left transform rotate-45 -translate-y-full translate-x-1/3 dark:bg-violet-600">New</span>
+              </button>
       </div>
 
 
       <Tabs>
-        <div className=' container px-6 py-10 mx-auto'>
-          <h1 className='text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl '>
+        <div className=' container px-6 py-10 mx-auto dark:text-white'>
+          <h1 className='text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl  dark:text-white '>
             Browse All Queries
           </h1>
 

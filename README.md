@@ -13,7 +13,7 @@ ProdutPulse is more than just a platform; it's your gateway to a dynamic world o
 Ready to unlock the full potential of alternative product exploration? Join us on ProdutPulse and embark on a journey of discovery today!
 
 
-# ProdutPulse  Backend and Fronted Given Below:  
+# ProdutPulse Fronted &  Backend Given Below:  
 
 **Live Site URL:** [ProdutPulse Client](https://product-pulse-7aeac.web.app)
 and

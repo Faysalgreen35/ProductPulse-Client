@@ -72,13 +72,13 @@ const MyQueries = () => {
         >
           <div className='flex items-center justify-center w-full h-full bg-gray-900/70'>
             <div className='text-center'>
-              <h1 className='text-3xl font-semibold text-white lg:text-4xl'>
-                Discover Better   <span className='text-green-400'>Choices</span> Today!
+              <h1 className='text-xl font-semibold text-white lg:text-5xl'>
+              Unleash Your Potential,  <span className='text-green-400'>Forge</span>  Your Destiny
               </h1>
               <br />
               <Link to='/add-queries'>
 
-                <button className="btn font-bold items-center justify-center  bg-gradient-to-r from-sky-200 to-blue-500 border-none  text-white p-12 mb-5">Add Query</button>
+                <button className="btn font-bold items-center justify-center text-2xl lg:text-5xl bg-gradient-to-r from-red-200 to-blue-500 border-none  text-white p-12 w-full h-full rounded-full ">Add Query</button>
               </Link>
             </div>
           </div>
@@ -102,7 +102,7 @@ const MyQueries = () => {
                   <div className="card-actions justify-center items-center mt-4 text-3xl">
 
                     <Link to='/add-queries'>
-                      <button className="btn font-bold items-center justify-center  bg-gradient-to-r from-sky-200 to-blue-500 border-none  text-white p-12 mb-5">Add Query</button>
+                    <button className="btn font-bold items-center justify-center text-2xl lg:text-5xl bg-gradient-to-r from-red-200 to-blue-500 border-none  text-white p-12 w-full h-full rounded-full ">Add Query</button>
                     </Link>
                   </div>
                 </div>
@@ -121,7 +121,7 @@ const MyQueries = () => {
               <Tabs>
                 <div className=' container px-6 py-10 mx-auto'>
                   <h1 className='text-2xl font-semibold text-center text-gray-800 capitalize lg:text-3xl '>
-                    Browse My Queries: <h2>{sortedQueries.length}</h2>
+                    Browse My Queries: <span className="text-2xl text-red-500" >{sortedQueries.length}</span>
                   </h1>
 
                   <p className='max-w-2xl mx-auto my-6 text-center text-gray-500 '>

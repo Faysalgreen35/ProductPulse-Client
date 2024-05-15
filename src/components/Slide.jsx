@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 
 import AOS from 'aos';
-import 'aos/dist/aos.css';  
+import 'aos/dist/aos.css';
 import { useEffect } from "react";
 
 const Slide = () => {
 
-    
-    //aos use
-    useEffect(() => {
-      AOS.init({
-          duration: 1000, // Set the duration for the animation
-          once: true, // Set to true if you want the animation to occur only once
-      });
+
+  //aos use
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Set the duration for the animation
+      once: true, // Set to true if you want the animation to occur only once
+    });
   }, []);
   return (
     <div data-aos="zoom-in" className="dark:text-white">
@@ -29,8 +29,12 @@ const Slide = () => {
             </h1>
             <br />
             <Link to='/queries'>
-            {/* <button className="btn btn-outline btn-success text-red-400"> Visit  Queries </button> */}
-            <button className="btn font-bold items-center justify-center  bg-gradient-to-r from-sky-200 to-blue-500 border-none  text-white p-12 mb-5 rounded-full">Visit  Queries</button>
+              {/* <button className="btn btn-outline btn-success text-red-400"> Visit  Queries </button> */}
+              {/* <button className="btn font-bold items-center justify-center  bg-gradient-to-r from-sky-200 to-blue-500 border-none  text-white p-12 mb-5 rounded-full">Visit  Queries</button> */}
+              <button type="button" className="relative px-8 py-4 ml-4  bg-gradient-to-r text-gray-900 font-bold  from-sky-200 to-blue-500 overflow-hidden    dark:bg-gray-800 dark:text-gray-50 lg:w-[40%] lg:h-[90%] rounded-full">Visit All Queries
+                <span className="absolute top-0 right-0 px-5 py-1 text-xs tracking-wider text-center uppercase whitespace-no-wrap origin-bottom-left transform rotate-45 -translate-y-full translate-x-1/3 dark:bg-violet-600">New</span>
+              </button>
+
             </Link>
           </div>
         </div>
