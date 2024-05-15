@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
-import axios from "axios";
+// import axios from "axios";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
@@ -15,25 +15,41 @@ const MyRecommendations = () => {
     const useaxiosSecure = useAxiosSecure()
 
     const [recommendation, setRecommendation] = useState([]);
+    const axiosSecure= useAxiosSecure();
 
+     
 
-    // const [query, setQuery] = useState([]);
+    // useEffect(() => {
+    //     const fetchQueries = async () => {
+    //         try {
+    //             if (user) {
+    //                 const response = await axios.get(`${import.meta.env.VITE_API_URL}/recommendation/email/${user?.email}`, { withCredentials: true });
+    //                 setRecommendation(response.data);
+
+    //             }
+    //         } catch (error) {
+    //             console.error('Error fetching queries:', error);
+    //         }
+    //     };
+
+    //     fetchQueries();
+    // }, [user]);
+
 
     useEffect(() => {
-        const fetchQueries = async () => {
+        const fetchRecommendations = async () => {
             try {
                 if (user) {
-                    const response = await axios.get(`${import.meta.env.VITE_API_URL}/recommendation/email/${user?.email}`, { withCredentials: true });
+                    const response = await axiosSecure.get(`/recommendation/email/${user?.email}`);
                     setRecommendation(response.data);
-
                 }
             } catch (error) {
-                console.error('Error fetching queries:', error);
+                console.error('Error fetching recommendations:', error);
             }
         };
+        fetchRecommendations();
+    }, [user, axiosSecure]);
 
-        fetchQueries();
-    }, [user]);
 
     console.log(recommendation)
     console.log(user.email)

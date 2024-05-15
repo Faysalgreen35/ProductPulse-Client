@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
-import axios from "axios";
+// import axios from "axios";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 // import { MdDelete } from "react-icons/md";
 
  
@@ -8,25 +9,44 @@ import axios from "axios";
 const RecommendationsForMe = () => {
 
     const { user } = useContext(AuthContext);
+    const  axiosSecure= useAxiosSecure();
 
     const [recommendation, setRecommendation] = useState([]);
 
+    // useEffect(() => {
+    //     const fetchQueries = async () => {
+    //         try {
+    //             if (user) {
+    //                 const response = await axios.get(`${import.meta.env.VITE_API_URL}/recommendations/email/${user?.email}`);
+    //                 setRecommendation(response.data);
+    //             }
+    //         } catch (error) {
+    //             console.error('Error fetching queries:', error);
+    //         }
+    //     };
+
+    //     fetchQueries();
+    // }, [user]);
+
+
     useEffect(() => {
-        const fetchQueries = async () => {
+        const fetchRecommendations = async () => {
             try {
                 if (user) {
-                    const response = await axios.get(`${import.meta.env.VITE_API_URL}/recommendations/email/${user?.email}`);
+                    const response = await axiosSecure.get(`/recommendations/email/${user?.email}`);
                     setRecommendation(response.data);
                 }
             } catch (error) {
-                console.error('Error fetching queries:', error);
+                console.error('Error fetching recommendations:', error);
             }
         };
+        fetchRecommendations();
+    }, [user, axiosSecure]);
 
-        fetchQueries();
-    }, [user]);
 
     console.log(recommendation)
+
+
     return (
         <div>
         <section className="container px-4 mx-auto">

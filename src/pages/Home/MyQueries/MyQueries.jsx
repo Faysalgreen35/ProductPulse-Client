@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useContext, useEffect, useState } from "react";
 import MyqueryCard from "./MyqueryCard";
-import axios from "axios";
+// import axios from "axios";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 
@@ -12,23 +13,42 @@ const MyQueries = () => {
   const { user } = useContext(AuthContext);
   const [queries, setQueries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const axiosSecure = useAxiosSecure();
+
+  // useEffect(() => {
+  //   const fetchQueries = async () => {
+  //     try {
+  //       if (user) {
+  //         const response = await axios.get(`${import.meta.env.VITE_API_URL}/query/email/${user?.email}`);
+  //         setQueries(response.data);
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching queries:', error);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+
+  //   fetchQueries();
+  // }, [user]);
+
+
 
   useEffect(() => {
-    const fetchQueries = async () => {
+    const fetchRecommendations = async () => {
       try {
         if (user) {
-          const response = await axios.get(`${import.meta.env.VITE_API_URL}/query/email/${user?.email}`);
+          const response = await axiosSecure.get(`/query/email/${user?.email}`);
           setQueries(response.data);
         }
       } catch (error) {
-        console.error('Error fetching queries:', error);
+        console.error('Error fetching recommendations:', error);
       } finally {
         setIsLoading(false);
       }
     };
-
-    fetchQueries();
-  }, [user]);
+    fetchRecommendations();
+  }, [user, axiosSecure]);
 
   console.log('is query ', queries);
 
@@ -56,7 +76,7 @@ const MyQueries = () => {
                 Discover Better   <span className='text-green-400'>Choices</span> Today!
               </h1>
               <br />
-              <Link to='/add-queries'> 
+              <Link to='/add-queries'>
 
                 <button className="btn font-bold items-center justify-center  bg-gradient-to-r from-sky-200 to-blue-500 border-none  text-white p-12 mb-5">Add Query</button>
               </Link>
@@ -72,27 +92,27 @@ const MyQueries = () => {
           queries.length === 0 ? (
             <div className="text-center mt-8 mx-auto">
 
-             
-                <div className="card bg-base-100 shadow-xl text-center  image-full">
-                  <figure><img src="https://blog.expertrec.com/wp-content/uploads/2021/01/no-result-found-1200x675.jpg" alt="Shoes" /></figure>
-                  <div className="card-body justify-center items-center ">
-                   
-                    <h2 className="card-title lg:text-6xl">No queries found. Add a query to get started!</h2>
-                    
-                    <div className="card-actions justify-center items-center mt-4 text-3xl">
-                     
+
+              <div className="card bg-base-100 shadow-xl text-center  image-full">
+                <figure><img src="https://blog.expertrec.com/wp-content/uploads/2021/01/no-result-found-1200x675.jpg" alt="Shoes" /></figure>
+                <div className="card-body justify-center items-center ">
+
+                  <h2 className="card-title lg:text-6xl">No queries found. Add a query to get started!</h2>
+
+                  <div className="card-actions justify-center items-center mt-4 text-3xl">
+
                     <Link to='/add-queries'>
                       <button className="btn font-bold items-center justify-center  bg-gradient-to-r from-sky-200 to-blue-500 border-none  text-white p-12 mb-5">Add Query</button>
-                      </Link>
-                    </div>
+                    </Link>
                   </div>
                 </div>
+              </div>
 
 
-                
 
-                
-             
+
+
+
             </div>
           ) : (
 
