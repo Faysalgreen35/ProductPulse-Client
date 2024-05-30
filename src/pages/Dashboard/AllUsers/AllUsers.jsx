@@ -3,23 +3,24 @@ import { useQuery } from "@tanstack/react-query"
 
 import { FaTrash, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
-import useAxiosSecureAdmin from "../../../hooks/useAxiosSecureAdmin";
+// import useAxiosSecureAdmin from "../../../hooks/useAxiosSecureAdmin";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 
 const AllUsers = () => {
-    const axiosSecure = useAxiosSecureAdmin()
+    const axiosSecureAdmin = useAxiosSecure()
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await axiosSecure.get('/users');
+            const res = await axiosSecureAdmin.get('/users');
             return res.data;
         }
     })
 
 
 const handleMakeAdmin = user =>{
-    axiosSecure.patch(`/users/admin/${user._id}`)
+    axiosSecureAdmin.patch(`/users/admin/${user._id}`)
         .then(res =>{
             console.log(res.data)
             if(res.data.modifiedCount > 0){
@@ -48,7 +49,7 @@ const handleMakeAdmin = user =>{
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axiosSecure.delete(`/users/${user._id}`)
+                axiosSecureAdmin.delete(`/users/${user._id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();

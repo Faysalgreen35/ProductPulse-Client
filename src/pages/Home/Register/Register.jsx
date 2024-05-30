@@ -9,17 +9,21 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoIosEyeOff } from 'react-icons/io';
 import { AuthContext } from '../../../providers/AuthProvider';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import Swal from 'sweetalert2';
 
 const Register = () => {
     const { creatUser } = useContext(AuthContext);
     const [registerError, setRegisterError] = useState('');
     const [succsess, setSuccsess] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    const axiosPublic = useAxiosPublic();
     const location = useLocation();
     const navigate = useNavigate();
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm();
 
@@ -69,6 +73,29 @@ const Register = () => {
             // Handle missing form data error if needed
             setRegisterError('Missing required form data. Please fill in all fields.');
         }
+
+         // create user in database
+         const userInfo= {
+            name: data.name,
+            email:data.email
+        }
+        axiosPublic.post('/users', userInfo)
+        .then(res => {
+            if(res.data.insertedId){
+                console.log('user added in the database')
+                reset();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User created Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+        }) 
+    
+       
+          navigate('/')
     };
 
     return (

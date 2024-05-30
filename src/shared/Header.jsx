@@ -5,10 +5,14 @@ import Logo2 from '../../src/assets/file.jpg'
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { useContext, useEffect, useState } from "react";
+import useAdmin from '../hooks/useAdmin';
+
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
     console.log('wait for usersss',)
+    const [isAdmin]= useAdmin();
+
 
     const [darkMode, setDarkMode] = useState(false);
 
@@ -49,8 +53,8 @@ const Header = () => {
     const navlinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to="/queries">Queries</NavLink></li>
-        <li><NavLink to="/dashboard/userHome">Dashboard</NavLink></li>
-        {/* {
+        {/* <li><NavLink to="/dashboard">Dashboard</NavLink></li> */}
+        {
        
        user && isAdmin &&  <li><Link to='/dashboard/adminHome'>Dashboard</Link></li>
 
@@ -60,7 +64,7 @@ const Header = () => {
       
        user && !isAdmin &&  <li><Link to='/dashboard/userHome'>Dashboard</Link></li>
 
-       } */}
+       }
 
         {
             user && <>

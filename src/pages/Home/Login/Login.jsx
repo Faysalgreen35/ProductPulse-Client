@@ -9,12 +9,15 @@ import { FcGoogle } from "react-icons/fc";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import axios from "axios";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 
 const Login = () => {
     const { signIn, signInwithGoogle } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
+
 
     // const handleGoogleSignIn = () => {
     //     signInwithGoogle()
@@ -46,11 +49,24 @@ const Login = () => {
         signInwithGoogle()
             .then(result => {
                 console.log(result.user);
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName
+                }
+    
+                axiosPublic.post('/users', userInfo)
+                .then(res =>{
+                    console.log(res.data);
+                    navigate('/');
+    
+                })
                 const user = { email: result.user.email }; // Extract user email from result
                 axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user, { withCredentials: true })
                     .then(res => {
+                     
                         console.log(res.data);
                         if (res.data.success) {
+
                             toast.success("Logged in successfully!");
                             navigate(location?.state ? location.state : '/');
                         }
@@ -64,6 +80,10 @@ const Login = () => {
                 console.error(error);
                 toast.error("Failed to login. Please try again.");
             });
+
+            
+           
+        
     };
     
 

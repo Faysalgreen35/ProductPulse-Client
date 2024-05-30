@@ -20,6 +20,7 @@ import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "../layouts/Dashboard";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import Contact from "../components/Contact/Contact";
 
 
 
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
             path:'my-queries',
             element:<PrivateRoutes><MyQueries></MyQueries></PrivateRoutes>
         },
+        {
+            path:'contact',
+            element:<Contact></Contact>
+        },
            
           
            
@@ -121,10 +126,11 @@ const router = createBrowserRouter([
             path:'adminHome',
             element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
           },
-        //   {
-        //     path:'addItems',
-        //     element:<AdminRoute><AddItems></AddItems></AdminRoute>
-        //   },
+           
+          {
+            path:'add-queries',
+            element:<AdminRoute><AddQueries></AddQueries></AdminRoute>
+          },
         //   {
         //     path:'manageItems',
         //     element:<AdminRoute><ManageItems></ManageItems></AdminRoute>
@@ -136,8 +142,14 @@ const router = createBrowserRouter([
         //   },
           {
             path:'users',
-            element: <AllUsers></AllUsers> 
-          }
+            element:<AdminRoute><AllUsers></AllUsers> </AdminRoute> 
+          },
+          {
+            path:'queries',
+            element:<Queries></Queries>,
+            loader:() => fetch(`${import.meta.env.VITE_API_URL}/query`)
+
+        },
         ]
       }
 ])
