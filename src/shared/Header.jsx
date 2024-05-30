@@ -49,6 +49,18 @@ const Header = () => {
     const navlinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to="/queries">Queries</NavLink></li>
+        <li><NavLink to="/dashboard/userHome">Dashboard</NavLink></li>
+        {/* {
+       
+       user && isAdmin &&  <li><Link to='/dashboard/adminHome'>Dashboard</Link></li>
+
+       }
+       
+       {
+      
+       user && !isAdmin &&  <li><Link to='/dashboard/userHome'>Dashboard</Link></li>
+
+       } */}
 
         {
             user && <>

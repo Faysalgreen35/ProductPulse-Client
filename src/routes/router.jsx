@@ -15,6 +15,11 @@ import MyRecommendations from "../pages/Home/MyRecommendations/MyRecommendations
 import RecommendationsForMe from "../pages/Home/RecommendationsForMe/RecommendationsForMe";
 import UpdatedQuery from "../pages/Home/UpdatedQuery/UpdatedQuery";
 import AllRecommendation from "../components/AllRecommendation";
+import AdminRoute from "./AdminRoute";
+import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import Dashboard from "../layouts/Dashboard";
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
 
 
 
@@ -83,7 +88,58 @@ const router = createBrowserRouter([
 
 
         ]
-    }
+    },
+    {
+        path:'dashboard',
+        element:<PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
+        children:[
+  
+          {
+  
+            path:'userHome',
+            element:<UserHome></UserHome>
+          },
+          {
+            path:'my-recommendations',
+            element:<PrivateRoutes><MyRecommendations></MyRecommendations></PrivateRoutes>
+        },
+        {
+            path:'recommendations-forme',
+            element:<PrivateRoutes><RecommendationsForMe></RecommendationsForMe></PrivateRoutes>
+        },
+        {
+            path:'my-queries',
+            element:<PrivateRoutes><MyQueries></MyQueries></PrivateRoutes>
+        },
+           
+          
+           
+  
+          //admin only routes
+          {
+  
+            path:'adminHome',
+            element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
+          },
+        //   {
+        //     path:'addItems',
+        //     element:<AdminRoute><AddItems></AddItems></AdminRoute>
+        //   },
+        //   {
+        //     path:'manageItems',
+        //     element:<AdminRoute><ManageItems></ManageItems></AdminRoute>
+        //   },
+        //   {
+        //     path:'updateItem/:id',
+        //     // element:<AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
+        //     // loader:({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+        //   },
+          {
+            path:'users',
+            element: <AllUsers></AllUsers> 
+          }
+        ]
+      }
 ])
 
 export default router;
