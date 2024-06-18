@@ -2,7 +2,8 @@ import axios from "axios";
 
  
 const axiosPublic = axios.create({
-    baseURL:'http://localhost:5000'
+    // baseURL:'https://product-pulse-server-mauve.vercel.app'
+    baseURL:'https://product-pulse-server-mauve.vercel.app'
 })
 const useAxiosPublic = () => {
     return axiosPublic;

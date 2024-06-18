@@ -41,20 +41,17 @@ const Header = () => {
     };
 
 
-    const handleSigOut = () => {
-        logOut()
-            .then()
-            .catch()
-    }
-
-
-
+    // const handleSignOut = () => {
+    //     logOut()
+    //         .then()
+    //         .catch()
+    // }
 
     const navlinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to="/queries">Queries</NavLink></li>
-        {/* <li><NavLink to="/dashboard">Dashboard</NavLink></li> */}
-        {
+        
+        {/* {
        
        user && isAdmin &&  <li><Link to='/dashboard/adminHome'>Dashboard</Link></li>
 
@@ -64,16 +61,26 @@ const Header = () => {
       
        user && !isAdmin &&  <li><Link to='/dashboard/userHome'>Dashboard</Link></li>
 
-       }
+       } */}
+         {user?.uid && (isAdmin ? (
+            <li><Link to='/dashboard/adminHome'>Dashboard</Link></li>
+        ) : (
+            <li><Link to='/dashboard/userHome'>Dashboard</Link></li>
+        ))}
 
-        {
+        {/* {
             user && <>
                 <li><NavLink to="/recommendations-forme">Recommendations For Me</NavLink></li>
                 <li><NavLink to="/my-queries">My Queries</NavLink></li>
                 <li><NavLink to="/my-recommendations">My recommendations</NavLink></li>
 
             </>
-        }
+        } */}
+        {user?.uid && <>
+            <li><NavLink to="/recommendations-forme">Recommendations For Me</NavLink></li>
+            <li><NavLink to="/my-queries">My Queries</NavLink></li>
+            <li><NavLink to="/my-recommendations">My recommendations</NavLink></li>
+        </>}
 
     </>
 
@@ -119,7 +126,7 @@ const Header = () => {
                                     <li><a className=" text-yellow-500">Name: {user.displayName}</a></li>
                                     <li><a className=" text-yellow-500"> Email: {user.email}</a></li>
 
-                                    <button onClick={handleSigOut} className="btn btn-primary"> Sign Out</button>
+                                    <button onClick={logOut} className="btn btn-primary"> Sign Out</button>
                                 </ul>
 
                             </div>

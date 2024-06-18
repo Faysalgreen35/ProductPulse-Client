@@ -17,7 +17,7 @@ const AdminHome = () => {
 
     useEffect(() => {
         const fetchStats = async () => {
-            const response = await fetch(`http://localhost:5000/user-stats`);
+            const response = await fetch(`https://product-pulse-server-mauve.vercel.app/user-stats`);
             const data = await response.json();
             setStats(data);
         };

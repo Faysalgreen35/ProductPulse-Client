@@ -9,15 +9,15 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { IoIosEyeOff } from 'react-icons/io';
 import { AuthContext } from '../../../providers/AuthProvider';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
-import Swal from 'sweetalert2';
+// import useAxiosPublic from '../../../hooks/useAxiosPublic';
+// import Swal from 'sweetalert2';
 
 const Register = () => {
-    const { creatUser } = useContext(AuthContext);
+    const { createUser,updateUserProfile } = useContext(AuthContext);
     const [registerError, setRegisterError] = useState('');
     const [succsess, setSuccsess] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const axiosPublic = useAxiosPublic();
+    // const axiosPublic = useAxiosPublic();
     const location = useLocation();
     const navigate = useNavigate();
     const {
@@ -27,7 +27,7 @@ const Register = () => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         const { email, password, name, photo } = data;
 
         if (email && password && name && photo) {
@@ -52,50 +52,58 @@ const Register = () => {
             }
 
             // If all conditions are met, proceed with user creation
-            creatUser(email, password, name, photo)
-                .then(result => {
-                    console.log(result.user);
-                    console.log(name);
+            const result = await createUser(email, password)
+            console.log(result)
+            navigate(location?.state ? location.state : '/register');
+            // creatUser(email, password)
+            //     .then(result => {
+            //         console.log(result.user);
+            //         console.log(name);
 
-                    toast.success("User registered in successfully!");
-                    navigate(location?.state ? location.state : '/register');
-                    setSuccsess('User registered successfully!');
+            //         toast.success("User registered in successfully!");
+            //         navigate(location?.state ? location.state : '/register');
+            //         setSuccsess('User registered successfully!');
 
-                })
-                .catch(error => {
-                    console.error(error);
-                    // Handle error messages appropriately
-                    setRegisterError('Failed to register user. Please try again later.');
-                    toast.error("Failed to login. Please try again.");
-                });
+            //     })
+            //     .catch(error => {
+            //         console.error(error);
+            //         // Handle error messages appropriately
+            //         setRegisterError('Failed to register user. Please try again later.');
+            //         toast.error("Failed to login. Please try again.");
+            //     });
         } else {
             console.error("Missing required form data");
             // Handle missing form data error if needed
             setRegisterError('Missing required form data. Please fill in all fields.');
         }
+         // 3. Save username and photo in firebase
+       updateUserProfile(name, photo)
+      navigate('/')
+      toast.success('Signup Successful')
+      reset();
 
          // create user in database
-         const userInfo= {
-            name: data.name,
-            email:data.email
-        }
-        axiosPublic.post('/users', userInfo)
-        .then(res => {
-            if(res.data.insertedId){
-                console.log('user added in the database')
-                reset();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "User created Successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-            }
-        }) 
+        //  const userInfo= {
+        //     name: data.name,
+        //     email:data.email
+        // }
+        // axiosPublic.post('/users', userInfo)
+        // .then(res => {
+        //     if(res.data.insertedId){
+        //         console.log('user added in the database')
+        //         reset();
+        //         Swal.fire({
+        //             position: "top-end",
+        //             icon: "success",
+        //             title: "User created Successfully",
+        //             showConfirmButton: false,
+        //             timer: 1500
+        //           });
+        //     }
+        // }) 
     
        
-          navigate('/')
+          
     };
 
     return (
