@@ -56,6 +56,12 @@ and
    - A search feature allows users to easily find queries, products, or recommendations.
 
 
+## Technologies Used
+- MongoDB
+- Express.js
+- React.js
+- Node.js
+- Firebase
  
 ## Getting Started
 To visit our website and enjoy the experience of wonderful ProdutPulse features, simply visit   our web at  [(https://product-pulse-7aeac.web.app)]. We look forward to welcoming you!
@@ -109,3 +115,20 @@ ProdutPulse is not just a website; it's a platform for artists and art enthusias
 
 
 
+## How to Run Locally
+1. **Clone the repository:**
+    ```bash
+    git clone  https://github.com/Faysalgreen35/ProductPulse-Client
+    ```
+2. **Navigate to the project directory:**
+    ```bash
+    cd ProductPulse-Client
+    ```
+3. **Install dependencies:**
+    ```bash
+    npm install
+    ```
+4. **Run the application:**
+    ```bash
+    npm run dev
+    ```
